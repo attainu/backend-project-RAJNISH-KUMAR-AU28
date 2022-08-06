@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {{!-- < jQuery library →  --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    {{!-- <!- Popper JS → --}} 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    
+    {{!-- <!- Latest compiled JavaScript → --}}
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>weather app</title>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>  
+      .temp_form{
+          width: 60%;
+          position: relative;
+          margin: 5rem auto 6rem;
+      }
+
+      .temp_form input[type="text"]{
+          width: 100%;
+          padding: 2rem 5rem 2rem 2rem;
+          background: #1e202b;
+          color: white;
+          outline: none;
+          border: none;
+          border-radius: 3rem;
+          font-size: 2.5rem;
+      }
+
+      ::placeholder{
+          color: #bfc1c8;
+      }
+
+      .temp_form input[type="submit"]{
+          position : absolute;
+          top: 5px;
+          right:5px;
+          bottom: 5px;
+          border: none;
+          background:#4909eb;
+          padding: 0 3rem;
+          border-radius: 3rem;
+          color: white;
+          font-size: 1.6rem;
+      }
+
+      .temp_form input[type="submit"]:hover{
+          color: #009ad8;
+          background-color: #fff;
+      }
+
+      .tempInformation{
+          width:40rem;
+          margin: auto;
+          min-height: 20rem;
+          border: 5px solid rgb(73, 210, 231);
+          border-color: #9b1ea9;
+          border-radius : 2rem;
+          padding: 1rem;
+          font-family:"Roboto", sans-serif;
+      }
+      .top_layer{
+          width: 100%;
+          height: 20%;
+          border: 4px solid black;
+          border-color: #5062b2;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-radius: 1rem;
+          padding: 2rem 0;
+          background-color: #3b3b3c;
+      }
+
+      .top_layer p{
+          color: #fff;
+          font-weight: 300;
+          padding :2rem;
+          font-size: 3rem;
+      }
+
+      .main_layer{
+          width: 100%;
+          height: 80%;
+          display: flex;
+          flex-direction: column;  
+      }
+
+      .main_layer #city_name{
+          padding: 2rem 0;
+          font-size: xx-large;  
+          color: #103cc0;
+          font-weight: 300;
+          font-size:3rem;
+          text-align: center;
+
+      }
+
+      .main_layer .middle_layer{
+          display: flex;
+          justify-content: space-around;
+          color: #fff;
+      }
+
+      .main_layer .middle_layer p,
+      .main_layer .middle_layer .fa {
+          font-size: 8rem;
+          font-weight: 900;
+      }
+
+      .fa{
+          color: #009ad8;
+      }
+
+      sup{
+          font-size: 6rem;
+          margin-top: -2rem;
+          
+      }
+
+      .data_hide{
+          visibility: hidden;
+          transition: all 0.3s linear;
+      }
+      
+      @media(max-width:768px){
+          .main_header_left{
+              height: auto;
+              margin: 5rem 0;
+          }
+          .main_header_right{
+              height: auto;
+              margin-top: 3rem;
+          }
+          .temp_form{
+              width: auto;
+          }
+          .tempInformation{
+              width: auto;
+          }
+      }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid main-menu">
+        <div class="row">
+            <div class="col-md-10 col-12 mx-auto">
+                <nav class="navbar navbar-expand-lg">
+                    <a class="navbar-brand" href="/home"> <i class="fa fa-snowflake"></i> What's The Weather <i
+                            class="fa fa-snowflake"></i> </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/weather">weather</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about">about</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid main_header">
+      <div class="row">
+        <div class="col-md-10 col-12 mx-auto">
+          <div class="main_content">
+            <form class="temp_form">
+              <input type="text" id="cityName" placeholder="Enter Your City Name" autocomplete="off">
+              <input type="submit" value="search" id="submitBtn">
+            </form>
+          </div>
+          <div class="tempInformation">
+            <div class="top_layer">
+              <p id="day">Tuesday</p>
+              <p id="today_data">13 OCT</p>
+            </div>
+            <div class="main_layer">
+                  <p id="city_name"><b><u>Get Output Here</u></b></p>
+              <div class="middle_layer data_hide">
+                <p id="temp"><span>0</span><sup>0</sup>C</p>
+                <p id="temp_status"><i class="fa fa-cloud aria-hidden="true"></i></p>
+              </div>   
+            </div>  
+          </div>   
+        </div>
+      </div>
+    </div>     
+<footer>
+  <p>connect with us❤️</p>
+    <div class="socialsite">
+        <b><a href="www.facebook.com">facebook</a></b></br>
+        <b><a class="insta" href="www.instagram.com">instagram</a></b>br></b>
+        <b><a class="snap" href="www.snapchat.com">snapchat</a><br></b>
+    </div>  
+</footer>
+
+
+<script src="js/script.js"></script>
+
+</body>
+
+</html>

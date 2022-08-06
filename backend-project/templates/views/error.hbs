@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {{!-- < jQuery library →  --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    {{!-- <!- Popper JS → --}} 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    
+    {{!-- <!- Latest compiled JavaScript → --}}
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>weather app</title>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .error_sec, h1{
+            color: rgb(22, 36, 120);
+            font-size: 12rem;
+            text-align: center;
+            padding-top: 7rem;
+        }
+        .error_sec p{
+            color: blueviolet;
+        }
+        button{
+            border: none;
+            padding: 0.8rem 1.8rem;
+            font-size: 1.4rem;
+            border-radius: 2rem;
+            text-transform: uppercase;
+            box-shadow:  0 10px 5px -3px #000;
+            outline: none;
+            outline-style: none;
+            }
+
+        button:hover{        
+            box-shadow: 0 8px 6px -6px var(--main-color);
+            }
+
+
+    </style>
+
+</head>
+
+<body>
+    
+    <div class="container-fluid main-menu">
+        <div class="row">
+            <div class="col-md-10 col-12 mx-auto">
+                <nav class="navbar navbar-expand-lg">
+                    <a class="navbar-brand" href="/home"> <i class="fa fa-snowflake"></i> What's The Weather <i
+                            class="fa fa-snowflake"></i> </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/weather">weather</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about">about</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="error_sec">
+                    <h1>Error <u>404!!</u></h1>
+                <p>
+                    Page Not Found 😥
+                </p>
+                <a href="/" ><button>Go Back</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+    <footer>
+        <p>connect with us❤️</p>
+        <div class="socialsite">
+            <b><a href="www.facebook.com">facebook</a></b></br>
+            <b><a class="insta" href="www.instagram.com">instagram</a></b>br></b>
+            <b><a class="snap" href="www.snapchat.com">snapchat</a><br></b>
+        </div>  
+    </footer>
+
+</body>
+
+</html>
